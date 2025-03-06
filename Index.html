@@ -9,7 +9,8 @@
     <button onclick="mediaPideDatos()">Calcular media</button>
     <button onclick="mediaLeeDatos()">Calcular media Lee Datos</button>
     <button onclick="multiploPideDatos()">Comprobar multiplo de 7</button>
-    <button onclick="multiploLeeDatos()">Comprobar multiplo de 7</button>
+    <button onclick="multiploLeeDatos()">Comprobar multiplo de 7 leyendo</button>
+    <button onclick="diaSemana()">Comprobar dia de la semana</button>
     <p id="display"></p>
     <label for="n1">N1: </label><input type="number" id="n1">
     <label for="n2">N2: </label><input type="number" id="n2">
@@ -62,6 +63,11 @@
         function pideDatos(){
             let nom=prompt("Dime tu nombre");
             let edad=prompt("Dime tu edad");
+        }
+        function diaSemana(){
+            const semana=['lunes','martes','miércoles','jueves','viernes','sábado','domingo']
+            let n1 = document.getElementById("n1").value;
+            document.getElementById('display').innerHTML= semana[n1-1];
         }
     </script>
 </body>
