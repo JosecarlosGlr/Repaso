@@ -9,6 +9,10 @@
     <button onclick="mediaPideDatos()">
         Calcular media
     </button>
+    <label for="n1">N1: </label><input type="number" id="n1">
+    <label for="n2">N2: </label><input type="number" id="n2">
+    <label for="n3">N3: </label><input type="number" id="n3">
+    <label for="n4">N4: </label><input type="number" id="n4">
     <script>
         function mediaPideDatos(){
             let n1=prompt("Dime el primer número");
@@ -19,6 +23,12 @@
         }
         function media4(n1,n2,n3,n4){
             return (n1+n2+n3+n4)/4
+        }
+        function mediaLeeDatos(){
+            let n1 = document.getElementById("n1").value;
+            let n2 = document.getElementById("n2").value;
+            let n3 = document.getElementById("n3").value;
+            let n4 = document.getElementById("n4").value;
         }
     </script>
 </body>
