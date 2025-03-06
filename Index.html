@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="mediaPideDatos()">
+        Calcular media
+    </button>
+    <script>
+        function mediaPideDatos(){
+            let n1=prompt("Dime el primer número");
+            let n2=prompt("Dime el segundo número");
+            let n3=prompt("Dime el tercer número");
+            let n4=prompt("Dime el cuarto número");
+            alert("La media es " + media4(Number(n1),Number(n2),Number(n3),Number(n4)));
+        }
+        function media4(n1,n2,n3,n4){
+            return (n1+n2+n3+n4)/4
+        }
+    </script>
+</body>
+</html>
