@@ -6,12 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="mediaPideDatos()">
-        Calcular media
-    </button>
-    <button onclick="mediaLeeDatos()">
-        Calcular media Lee Datos
-    </button>
+    <button onclick="mediaPideDatos()">Calcular media</button>
+    <button onclick="mediaLeeDatos()">Calcular media Lee Datos</button>
+    <button onclick="multiploPideDatos()">Comprobar multiplo de 7</button>
+    <button onclick="multiploLeeDatos()">Comprobar multiplo de 7</button>
+    <p id="display"></p>
     <label for="n1">N1: </label><input type="number" id="n1">
     <label for="n2">N2: </label><input type="number" id="n2">
     <label for="n3">N3: </label><input type="number" id="n3">
@@ -34,6 +33,35 @@
             let n4 = document.getElementById("n4").value;
             document.getElementById('display').innerHTML =
             "La media es " + media4(Number(n1),Number(n2),Number(n3),Number(n4));
+        }
+        function esMultiplo7(n){
+            if(n%7==0){
+                return true;
+            } else{
+                return false;
+            }
+        }
+        function multiploPideDatos(){
+            const n=prompt("Dime el número que quieres comprobar");
+            if(esMultiplo7(n)){
+                alert("Si es múltiplo")
+            } else{
+                alert("No es múltiplo")
+            }
+        }
+        function multiploLeeDatos(){
+            const n1=document.getElementById("n1").value;
+            if(esMultiplo7(n1)){
+                document.getElementById('display').innerHTML =
+                "Si es múltiplo";
+            } else{
+                document.getElementById('display').innerHTML =
+                "No es múltiplo";
+            }
+        }
+        function pideDatos(){
+            let nom=prompt("Dime tu nombre");
+            let edad=prompt("Dime tu edad");
         }
     </script>
 </body>
