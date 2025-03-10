@@ -4,19 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #titulo{
+            color: green;
+            background-color: yellow;
+            border: 2px solid green;
+            font-size: 5em;
+            text-align: center;
+        }
+        #capa{
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
+    <h1 id="titulo"></h1>
     <button onclick="mediaPideDatos()">Calcular media</button>
     <button onclick="mediaLeeDatos()">Calcular media Lee Datos</button>
     <button onclick="multiploPideDatos()">Comprobar multiplo de 7</button>
     <button onclick="multiploLeeDatos()">Comprobar multiplo de 7 leyendo</button>
     <button onclick="diaSemana()">Comprobar dia de la semana</button>
+    <button id="boton-muestra">Muestra Usuario</button>
+    <button id="boton-color">Momento Arcoiris</button>
     <p id="display"></p>
     <label for="n1">N1: </label><input type="number" id="n1">
     <label for="n2">N2: </label><input type="number" id="n2">
     <label for="n3">N3: </label><input type="number" id="n3">
     <label for="n4">N4: </label><input type="number" id="n4">
+    <div id="capa">
+        <label for="color">Color</label>
+        <select id="colores">
+            <option value="red" selected>Rojo</option>
+            <option value="green">Verde</option>
+            <option value="yellow">Amarillo</option>
+            <option value="blue">Azul</option>
+        </select>
+    </div>
+    <h1>Formulario</h1>
+    <form action="registro.php" onsubmit="return validaFormulario()">
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario">
+    <label for=""><input type="checkbox" name="acepto" id="acepto">He leído y acepto las condiciones </label>
+    <input type="submit" value="registro">
+    </form>
+
+    <h1>Solicitud prestamos</h1>
+    <form action="solicitud.php" onsubmit="return validaSolicitud()">
+    <label for="usuarioS">Usuario:</label>
+    <input type="text" id="usuarioS">
+    <label for="importe">Importe a seleccionar:</label>
+    <input type="number" id="importe">    
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad">
+    <select name="" id="situacionLaboral">
+        <option value="activo">Activo</option>
+        <option value="desempleado">Desempleado</option>
+        <option value="jubilado">Jubilado</option>
+    </select>
+    <input type="submit" value="registroS">
+    </form>
     <script>
+        document.getElementById('boton-muestra').addEventListener('click',h1Usuario);
+        document.getElementById('boton-color').addEventListener('click',h1color);
+        document.getElementById('colores').addEventListener('change',cambioColor);
+        function validaSolicitud(){
+            usuario = document.querySelector("#usuarioS").value;
+            if (usuario.length<10){
+            alert("la longitud del usuario no puede ser menor que 10");
+            return false;
+            }
+            if (document.querySelector('#situacionLaboral').value==''){
+                alert("Debes elegir una");
+                return false;
+            }
+            edad = document.querySelector("#edad").value;
+            if(edad<65){
+                alert("la edad debe ser minimo de 65");
+                return false;
+            }
+            importe = document.querySelector("#importe").value;
+            if(importe<10000){
+                alert("el importe minimo es de 10000");
+                return false;
+            }
+
+        }
+        function validaFormulario(){
+            usuario = document.querySelector("#usuario").value;
+            if (usuario.length<5){
+            alert("la longitud del usuario no puede ser menor que 5");
+            return false;
+            }
+            if(!document.querySelector("#acepto").checked){
+                alert("Debe aceptar las condiciiones");
+                return false;
+            }
+            return true;
+        }
         function mediaPideDatos(){
             let n1=prompt("Dime el primer número");
             let n2=prompt("Dime el segundo número");
@@ -68,6 +152,34 @@
             const semana=['lunes','martes','miércoles','jueves','viernes','sábado','domingo']
             let n1 = document.getElementById("n1").value;
             document.getElementById('display').innerHTML= semana[n1-1];
+        }
+        function h1Usuario(){
+            const usuario = prompt("Digame el nombre de usuario");
+            document.getElementById('titulo').textContent = usuario;
+        }
+        function h1color(){
+            document.getElementById('titulo').style.color='purple';
+            document.getElementById('titulo').style.backgroundColor='lightblue';
+            document.getElementById('titulo').style.fontSize='8em';
+            document.getElementById('titulo').style.borderRadius='10px';
+            document.getElementById('titulo').style.border='5px solid pink';
+            document.getElementById('titulo').style.maxWidth='400px';
+            document.getElementById('titulo').style.textAlign='center';
+        }
+        function cambioColor(){
+            const color= document.getElementById('colores').value;
+            if(color=="green"){
+                document.getElementById('capa').style.backgroundColor='green';
+            }
+            if(color=="red"){
+                document.getElementById('capa').style.backgroundColor='red';
+            }
+            if(color=="blue"){
+                document.getElementById('capa').style.backgroundColor='blue';
+            }
+            if(color=="yellow"){
+                document.getElementById('capa').style.backgroundColor='yellow';
+            }
         }
     </script>
 </body>
